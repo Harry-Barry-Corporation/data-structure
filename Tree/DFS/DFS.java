@@ -1,4 +1,5 @@
-// import Tree.Node;
+
+import Tree.Node;
 
 class DFS {
     public void inorder(Node root) {

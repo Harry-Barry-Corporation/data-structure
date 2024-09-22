@@ -1,18 +1,18 @@
-package Tree.BFS;
+package Tree;
 
-class Node {
-    int val;
-    Node left;
-    Node right;
+public class Node {
+    public int val;
+    public Node left;
+    public Node right;
 
-    Node(int val) {
+    public Node(int val) {
         this.val = val;
         this.left = null;
         this.right = null;
     }
 
     // Constructor to create the entire tree structure
-    Node() {
+    public Node() {
         this(10);
         this.left = new Node(5);
         this.right = new Node(15);
@@ -30,7 +30,7 @@ class Node {
         this.right.right.right = new Node(20);
     }
 
-    static void printNodes(Node root) {
+    public static void printNodes(Node root) {
         if (root == null) {
             return;
         }
