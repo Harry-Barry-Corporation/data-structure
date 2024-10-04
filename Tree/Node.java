@@ -20,16 +20,16 @@ public class Node {
     }
 
     public static void main(String[] args) {
-        /*
-         * Binary Tree Structure:
-         * 10
-         * / \
-         * 5 15
-         * / \ / \
-         * 3 7 12 18
-         * / / \ \
-         * 1 6 13 20
-         */
+        /* 
+                Binary Tree Structure:
+                          10
+                        /    \
+                      5       15
+                     / \     /  \
+                    3   7   12   18
+                   /   / \   \   \
+                  1   6  13   20
+        */
 
         // This is constructing a tree
         Node rootNode = new Node(10);
