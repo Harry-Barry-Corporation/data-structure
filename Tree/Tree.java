@@ -58,6 +58,10 @@ class Tree {
     public void levelOrderTraverse() {
         TreeTraverser.levelOrder(this.rootNode);
     }
+
+    public void breadthFirstTraverse() {
+        TreeTraverser.breadthFirst(this.rootNode);
+    }
     
     public void print(Order order) {
         switch (order) {
