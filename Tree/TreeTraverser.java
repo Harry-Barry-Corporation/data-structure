@@ -2,8 +2,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class TreeTraverser {
-    protected static void levelOrder(Node node) {
-        /* @formatter:off
+       /* @formatter:off
 
                           10
                         /    \
@@ -14,6 +13,7 @@ public class TreeTraverser {
                   1   6  13   20
         */
 
+    protected static void levelOrder(Node node) {     
         if (node == null) {
             return;
         }
