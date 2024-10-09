@@ -28,4 +28,14 @@ class TreePrinter {
         postOrder(node.right);
         System.out.print(node.val + " ");
     }
+
+    protected static void printSemantic(Node node) {
+
+    }
+
+    protected static void printVisual(Node node) {
+
+    }
+
+
 }
