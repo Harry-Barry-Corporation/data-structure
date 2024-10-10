@@ -14,6 +14,8 @@ public class TreeTraverser {
                   1   6  13   20
         */
 
+        System.out.println("\n\nLevel order traversal\n");
+
         if (node == null) {
             return;
         }
@@ -48,6 +50,8 @@ public class TreeTraverser {
     }
 
     protected static void breadthFirst(Node node) {
+        System.out.println("\n\nBreadth-first traversal\n");
+
         if (node == null) {
             return;
         }
@@ -69,9 +73,14 @@ public class TreeTraverser {
         }
     }
 
-    public static void main(String[] args) {
-        Tree tree = new Tree();
-        tree.levelOrderTraverse();
-        tree.breadthFirstTraverse();
+    // IN ORDER
+    protected static void depthFirst(Node node) {
+        if (node == null) {
+            return;
+        }
+
+        depthFirst(node.left);
+        System.out.println(node.val + " ");
+        depthFirst(node.right);
     }
 }

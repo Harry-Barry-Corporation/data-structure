@@ -39,8 +39,6 @@ class Tree {
         this.rootNode.right.right.right = new Node(20);
     }
 
-    // Interpreted with level-order traversal
-    // root = [1, 2, 3, 4, 5, 6, 7]
     public Tree(int[] input) {
 
     }
@@ -62,21 +60,38 @@ class Tree {
     public void breadthFirstTraverse() {
         TreeTraverser.breadthFirst(this.rootNode);
     }
+
+    // IN ORDER
+    public void depthFirstTraverse() {
+        TreeTraverser.depthFirst(this.rootNode);
+    }
     
     public void print(Order order) {
         switch (order) {
             case IN_ORDER:
+                System.out.println("\nIn-order");
                 TreePrinter.inOrder(this.rootNode);
                 break;
             case PRE_ORDER:
+                System.out.println("\nPre-order");
                 TreePrinter.preOrder(this.rootNode);
                 break;
             case POST_ORDER:
+                System.out.println("\nPost-order");
                 TreePrinter.postOrder(this.rootNode);
                 break;
             default:
-                System.out.println("Invalid order. Defaulting to in-order.");
+                System.out.println("\nInvalid order. Defaulting to in-order.");
                 TreePrinter.inOrder(this.rootNode);
         }
+    }
+
+    public static void main() {
+        Tree tree = new Tree();
+        tree.print(Order.PRE_ORDER);
+        tree.print(Order.IN_ORDER);
+        tree.print(Order.POST_ORDER);
+        tree.levelOrderTraverse();
+        tree.breadthFirstTraverse();
     }
 }
