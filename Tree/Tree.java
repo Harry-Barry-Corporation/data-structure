@@ -4,7 +4,9 @@ import java.util.Map;
 enum Order {
     IN_ORDER,
     PRE_ORDER,
-    POST_ORDER
+    POST_ORDER,
+    SEMANTIC,
+    VISUAL
 }
 
 class Tree {
@@ -80,14 +82,20 @@ class Tree {
                 System.out.println("\nPost-order");
                 TreePrinter.postOrder(this.rootNode);
                 break;
+            case SEMANTIC:
+                System.out.println("\nSemantic");
+                TreePrinter.printSemantic(this.rootNode); 
+                break;
             default:
-                System.out.println("\nInvalid order. Defaulting to in-order.");
-                TreePrinter.inOrder(this.rootNode);
+                System.out.println("\nInvalid order. Defaulting to visual.");
+                TreePrinter.printVisual(this.rootNode);
         }
     }
 
     public static void main() {
         Tree tree = new Tree();
+        tree.print(Order.VISUAL);
+        tree.print(Order.SEMANTIC); 
         tree.print(Order.PRE_ORDER);
         tree.print(Order.IN_ORDER);
         tree.print(Order.POST_ORDER);
