@@ -5,7 +5,7 @@ enum Order {
     IN_ORDER,
     PRE_ORDER,
     POST_ORDER,
-    SEMANTIC,
+    INDENTED,
     VISUAL
 }
 
@@ -41,20 +41,18 @@ class Tree {
         this.rootNode.right.right.right = new Node(20);
     }
 
+    // Level order traversal
     public Tree(int[] input) {
-
     }
 
     // Map with left and right properties
     public Tree(Map<String, ?> input) {
-
     }
 
-    // Parentheses indicate level
+    // Parentheses indicate level constructor
     public Tree(String input) {
-
     }
-
+    
     public void levelOrderTraverse() {
         TreeTraverser.levelOrder(this.rootNode);
     }
@@ -82,10 +80,14 @@ class Tree {
                 System.out.println("\nPost-order");
                 TreePrinter.postOrder(this.rootNode);
                 break;
-            case SEMANTIC:
-                System.out.println("\nSemantic");
-                TreePrinter.printSemantic(this.rootNode); 
+            case INDENTED:
+                System.out.println("\nIndented");
+                TreePrinter.printIndented(this.rootNode); 
                 break;
+            case VISUAL:
+                System.out.println("\nVisual");
+                TreePrinter.printVisual(this.rootNode); 
+                break; 
             default:
                 System.out.println("\nInvalid order. Defaulting to visual.");
                 TreePrinter.printVisual(this.rootNode);
@@ -95,7 +97,7 @@ class Tree {
     public static void main() {
         Tree tree = new Tree();
         tree.print(Order.VISUAL);
-        tree.print(Order.SEMANTIC); 
+        tree.print(Order.INDENTED); 
         tree.print(Order.PRE_ORDER);
         tree.print(Order.IN_ORDER);
         tree.print(Order.POST_ORDER);

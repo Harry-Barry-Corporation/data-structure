@@ -29,14 +29,14 @@ class TreePrinter {
         System.out.print(node.val + " ");
     }
 
-    public static void printSemantic(Node root) {
+    public static void printIndented(Node root) {
         if (root == null) {
             System.out.println("Empty tree");
             return;
         }
 
         StringBuilder sb = new StringBuilder();
-        printSemanticHelper(root, sb, "", "");
+        printIndentedHelper(root, sb, "", "");
         System.out.println(sb.toString());
     }
 
@@ -48,7 +48,7 @@ class TreePrinter {
         printGrid(grid);
     }
 
-    private static void printSemanticHelper(Node node, StringBuilder sb, String padding, String pointer) {
+    private static void printIndentedHelper(Node node, StringBuilder sb, String padding, String pointer) {
         if (node == null) {
             sb.append(padding).append(pointer).append("null\n");
             return;
@@ -67,8 +67,8 @@ class TreePrinter {
         String pointerForRight = "└── ";
         String pointerForLeft = (node.right != null) ? "├── " : "└── ";
 
-        printSemanticHelper(node.left, sb, paddingForBoth, pointerForLeft);
-        printSemanticHelper(node.right, sb, paddingForBoth, pointerForRight);
+        printIndentedHelper(node.left, sb, paddingForBoth, pointerForLeft);
+        printIndentedHelper(node.right, sb, paddingForBoth, pointerForRight);
     }
 
     private static int getHeight(Node node) {
