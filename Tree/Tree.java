@@ -168,7 +168,6 @@ public class Tree {
         tree2.print(Order.VISUAL);
 
         Integer[] copied = { 3, 9, 20, null, null, 15, 7 };
-
         Tree tree3 = new Tree(copied);
         tree3.print(Order.VISUAL);
 
