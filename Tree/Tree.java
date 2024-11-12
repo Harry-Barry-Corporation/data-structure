@@ -80,6 +80,8 @@ public class Tree {
             return;
         }
 
+        System.out.println("\n\nInput map: " + input.toString());
+
         this.rootNode = new Node((Integer) input.get("value"));
         buildTree(this.rootNode, input);
     }
@@ -108,75 +110,6 @@ public class Tree {
     @SuppressWarnings("unchecked")
     private Map<String, Object> castToMap(Object obj) {
         return (Map<String, Object>) obj;
-    }
-
-    // Parentheses indicate level constructor
-    // (1 (2 (4) (5)) (3 (6) (7)))
-    // (1 (2 null (4)) (3 null (5)));
-
-    public Tree(String input) {
-        if (input == null || input.isEmpty()) {
-            this.rootNode = null;
-            return;
-        }
-        this.rootNode = buildTreeFromString(input);
-    }
-
-    private Node buildTreeFromString(String input) {
-        input = input.trim();
-        if (input.isEmpty() || input.equals("null")) {
-            return null;
-        }
-
-        if (!input.startsWith("(")) {
-            return null;
-        }
-
-        // Find the value between the opening parenthesis
-        // and the first space or closing parenthesis
-        int valueEnd = input.indexOf(' ');
-        if (valueEnd == -1) {
-            valueEnd = input.indexOf(')');
-        }
-        if (valueEnd == -1) {
-            return null; // Invalid format
-        }
-
-        int value = Integer.parseInt(input.substring(1, valueEnd));
-        Node node = new Node(value);
-
-        // Only try to parse children
-        // if there's more content after the value
-        if (valueEnd < input.length() - 1) {
-            int leftStart = valueEnd + 1;
-            int leftEnd = findMatchingParenthesis(input, leftStart);
-            node.left = buildTreeFromString(
-                input.substring(leftStart, leftEnd)
-            );
-
-            int rightStart = leftEnd + 1;
-            int rightEnd = findMatchingParenthesis(input, rightStart);
-            node.right = buildTreeFromString(
-                input.substring(rightStart, rightEnd)
-            );
-        }
-
-        return node;
-    }
-
-    private int findMatchingParenthesis(String input, int start) {
-        int count = 0;
-        for (int i = start; i < input.length(); i++) {
-            if (input.charAt(i) == '(') {
-                count++;
-            } else if (input.charAt(i) == ')') {
-                count--;
-            }
-            if (count == 0) {
-                return i + 1; // Return index after the closing parenthesis
-            }
-        }
-        return input.length(); // In case of unmatched parentheses
     }
 
     public void levelOrderTraverse() {
@@ -220,7 +153,7 @@ public class Tree {
         }
     }
 
-    public static void main() {
+    public static void main(String[] args) {
         Tree tree = new Tree();
         tree.print(Order.VISUAL);
         tree.print(Order.INDENTED);
@@ -264,13 +197,5 @@ public class Tree {
 
         Tree tree4 = new Tree(mapInput);
         tree4.print(Order.VISUAL);
-
-        Tree tree5 = new Tree("(1 (2 (4) (5)) (3 (6) (7)))");
-        Tree tree6 = new Tree("(1 (2 (3 (4) null) null) null)");
-        Tree tree7 = new Tree("(1 (2 null (4)) (3 null (5)))");
-
-        tree5.print(Order.VISUAL);
-        tree6.print(Order.VISUAL);
-        tree7.print(Order.VISUAL);
     }
 }
