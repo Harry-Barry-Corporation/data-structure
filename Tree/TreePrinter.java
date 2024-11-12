@@ -29,6 +29,8 @@ class TreePrinter {
         System.out.print(node.val + " ");
     }
 
+    /* ----- MACHINE GENERATED -- START ----- */
+
     public static void printIndented(Node root) {
         if (root == null) {
             System.out.println("Empty tree");
@@ -102,5 +104,7 @@ class TreePrinter {
             System.out.println();
         }
     }
+
+    /* ----- MACHINE GENERATED -- END ----- */
 
 }
