@@ -1,4 +1,5 @@
-class TreePrinter {
+class Printer {
+
     protected static void inOrder(Node node) {
         if (node == null) {
             return;
@@ -50,15 +51,26 @@ class TreePrinter {
         printGrid(grid);
     }
 
-    private static void printIndentedHelper(Node node, StringBuilder sb, String padding, String pointer) {
+    private static void printIndentedHelper(
+        Node node,
+        StringBuilder sb,
+        String padding,
+        String pointer
+    ) {
         if (node == null) {
             sb.append(padding).append(pointer).append("null\n");
             return;
         }
 
-        sb.append(padding).append(pointer).append(node.val).append("\n");
+        sb
+            .append(padding)
+            .append(pointer)
+            .append(node.val)
+            .append("\n");
 
-        StringBuilder paddingBuilder = new StringBuilder(padding);
+        StringBuilder paddingBuilder = new StringBuilder(
+            padding
+        );
         if (pointer.equals("├── ")) {
             paddingBuilder.append("│   ");
         } else {
@@ -67,21 +79,40 @@ class TreePrinter {
 
         String paddingForBoth = paddingBuilder.toString();
         String pointerForRight = "└── ";
-        String pointerForLeft = (node.right != null) ? "├── " : "└── ";
+        String pointerForLeft = (node.right != null)
+            ? "├── "
+            : "└── ";
 
-        printIndentedHelper(node.left, sb, paddingForBoth, pointerForLeft);
-        printIndentedHelper(node.right, sb, paddingForBoth, pointerForRight);
+        printIndentedHelper(
+            node.left,
+            sb,
+            paddingForBoth,
+            pointerForLeft
+        );
+        printIndentedHelper(
+            node.right,
+            sb,
+            paddingForBoth,
+            pointerForRight
+        );
     }
 
     private static int getHeight(Node node) {
-        if (node == null)
-            return 0;
-        return 1 + Math.max(getHeight(node.left), getHeight(node.right));
+        if (node == null) return 0;
+        return (
+            1 +
+            Math.max(getHeight(node.left), getHeight(node.right))
+        );
     }
 
-    private static void fillGrid(String[][] grid, Node node, int row, int left, int right) {
-        if (node == null)
-            return;
+    private static void fillGrid(
+        String[][] grid,
+        Node node,
+        int row,
+        int left,
+        int right
+    ) {
+        if (node == null) return;
 
         int mid = (left + right) / 2;
         grid[row][mid] = String.valueOf(node.val);
@@ -104,7 +135,6 @@ class TreePrinter {
             System.out.println();
         }
     }
-
     /* ----- MACHINE GENERATED -- END ----- */
 
 }
